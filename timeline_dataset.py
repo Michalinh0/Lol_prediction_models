@@ -13,8 +13,8 @@ api_key = os.getenv('RIOT_API_KEY')
 lolWatcher = LolWatcher(api_key)
 riotWatcher = RiotWatcher(api_key)
 
-dataset = 'large_dataset'
-output_directory = 'large_timelines'
+dataset = 'test_dataset'
+output_directory = 'test_timelines'
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 path_to_dataset = os.path.join(base_path, dataset)

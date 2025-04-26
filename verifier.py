@@ -1,8 +1,8 @@
 import os
 import re
 
-dataset = 'large_dataset'
-timeline = 'large_timelines'
+dataset = 'small_dataset'
+timeline = 'small_timelines'
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 dir_a = os.path.join(base_path, dataset)
@@ -22,8 +22,8 @@ files_a = os.listdir(dir_a)
 files_b = os.listdir(dir_b)
 
 # Extract numbers
-pattern_a = r'EUN1_(\d+)$'
-pattern_b = r'EUN1_(\d+)_timeline$'
+pattern_a = r'EUN1_(\d+)\.json$'
+pattern_b = r'EUN1_(\d+)_timeline\.json$'
 
 nums_a = extract_numbers(files_a, pattern_a)
 nums_b = extract_numbers(files_b, pattern_b)
