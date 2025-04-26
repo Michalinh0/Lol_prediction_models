@@ -111,7 +111,7 @@ for i, filename in enumerate(os.listdir(path_to_dataset)):
     for i in range(1,11):
         kda = extract_kda(timeline, i)
         wards = extract_wards(timeline, i)
-        match_data[f"player{i}_champion"] = match_result["info"]["participants"][i-1]["championName"]
+        match_data[f"player{i}_champion"] = match_result["info"]["participants"][i-1]["championId"]
         match_data[f"player{i}_kills"] = kda[0]
         match_data[f"player{i}_deaths"] = kda[1]
         match_data[f"player{i}_assists"] = kda[2]

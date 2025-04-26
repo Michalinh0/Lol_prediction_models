@@ -34,8 +34,7 @@ for i,filename in enumerate(os.listdir(data_directory)):
         match_data[f"player{player_num}_kills"] = participant["kills"]
         match_data[f"player{player_num}_deaths"] = participant["deaths"]
         match_data[f"player{player_num}_assists"] = participant["assists"]
-        
-        
+        match_data[f"player{player_num}_champion"] = participant["championId"]
         match_data[f"player{player_num}_gold"] = participant["goldEarned"]
         match_data[f"player{player_num}_experience"] = participant["champExperience"]
         match_data[f"player{player_num}_damage_dealt"] = participant["totalDamageDealtToChampions"]
