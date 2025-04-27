@@ -3,8 +3,10 @@ import json
 import pandas as pd
 import time
 
-timeline_directory = 'large_timelines'
-dataset_directory = 'large_dataset'
+size = "test"
+
+timeline_directory = f'{size}_timelines'
+dataset_directory = f'{size}_dataset'
 
 base_path = os.path.dirname(os.path.abspath(__file__))
 path_to_timeline = os.path.join(base_path, timeline_directory)
@@ -131,6 +133,6 @@ for i, filename in enumerate(os.listdir(path_to_dataset)):
     
 df = pd.DataFrame(data)
 
-df.to_csv("ranked_matches_at_15_large.csv", index=False)
+df.to_csv(f"ranked_matches_at_15_{size}.csv", index=False)
 
 

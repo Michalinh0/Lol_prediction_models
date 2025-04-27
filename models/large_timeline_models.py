@@ -11,10 +11,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import RidgeClassifier
 from lightgbm import LGBMClassifier
+from sklearn.naive_bayes import GaussianNB
 import time
 
-train_df = pd.read_csv("ranked_matches_large.csv")
-test_df = pd.read_csv("ranked_matches_test.csv")
+train_df = pd.read_csv("ranked_matches_at_15_large.csv")
+test_df = pd.read_csv("ranked_matches_at_15_test.csv")
 
 X_train = train_df.drop("Winning team", axis=1)
 y_train = train_df["Winning team"]
@@ -32,7 +33,7 @@ models = {
     "Gradient Boosting": GradientBoostingClassifier(),    
     "AdaBoost": AdaBoostClassifier(),
     "LightGBM": LGBMClassifier(),
-    "Ridge Classifier": RidgeClassifier()
+    "Ridge Classifier": RidgeClassifier(),
 }
 
 for name, model in models.items():

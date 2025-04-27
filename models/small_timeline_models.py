@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.ensemble import RandomForestClassifier , GradientBoostingClassifier
 from sklearn.svm import SVC
@@ -15,11 +15,26 @@ import time
 
 train_df = pd.read_csv("ranked_matches_at_15_small.csv")
 test_df = pd.read_csv("ranked_matches_at_15_test.csv")
+scaler = StandardScaler()
+
+cols_to_drop = [
+    col for col in train_df.columns
+    if 'champion' in col
+        ]
+train_df.drop(cols_to_drop, axis=1, inplace=True)
+
+cols_to_drop = [
+    col for col in test_df.columns
+    if 'champion' in col
+]
+test_df.drop(cols_to_drop, axis=1, inplace=True)
 
 X_train = train_df.drop("Winning team", axis=1)
+X_train_scaled = scaler.fit_transform(X_train)
 y_train = train_df["Winning team"]
 
 X_test = test_df.drop("Winning team", axis=1)
+X_test_scaled = scaler.transform(X_test)
 y_test = test_df["Winning team"]
 
 start = time.time()
@@ -37,8 +52,8 @@ models = {
 
 for name, model in models.items():
     start_timestamp = time.time()
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
+    model.fit(X_train_scaled, y_train)
+    y_pred = model.predict(X_test_scaled)
     end_timestamp = time.time()
     
     print(f"Model: {name}")
